@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import App from './App';
 import './index.css';
 import reducer from './reducers';
+imort { composeWhithDevTools } from 'redux-devtools-extension';
 
 
 

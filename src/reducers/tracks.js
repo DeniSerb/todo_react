@@ -1,7 +1,4 @@
-const initialState = [
-  'Bilama',
-  'Sanala'
-];
+const initialState = [];
 
 
 export default function playlist(state = initialState, action) {
