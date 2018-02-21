@@ -9,11 +9,7 @@ class App extends Component {
     this.props.onAddTask(this.taskInput.value);
     this.taskInput.value = '';
   };
-  findTask () {
-        console.log('findTask', this.searchInput.value);
-        this.props.onFindTask(this.searchInput.value);
-        this.searchInput.value = '';
-  };
+
 	render() {
 		console.log(this.props.testStore)
 		return (
@@ -22,10 +18,6 @@ class App extends Component {
  		   <input type="text" ref={(input)=> {this.taskInput = input}}/>
  		   <button onClick={this.addTask.bind(this)}>Add Task</button>
  		</div>
-    <div>
-       <input type="text" ref={(input)=> {this.searchInput = input}}/>
-       <button onClick={this.findTask.bind(this)}>Find Tasks</button>
-    </div>
     <div>
       <button onClick={this.props.onGetTasks}>Get Tasks</button>
     </div>
@@ -45,7 +37,7 @@ class App extends Component {
 
 export default connect(
   state => ({
-    tasks: state.tasks.filter(task => task.name.includes(state.filterTasks))
+    tasks: state.tasks
   }),
   dispatch => ({
     onAddTask: (name) =>{
@@ -54,10 +46,6 @@ export default connect(
         name: name
       };
       dispatch({ type: 'ADD_TASK', payload });
-    },
-    onFindTask: (name) => {
-        console.log('name', name);
-        dispatch({type: 'FIND_TASK', payload: name});
     },
     onGetTasks: () => {
       dispatch(getTasks());
