@@ -27,10 +27,10 @@
      ];
 
 
-     export const getTracks = () => dispatch => {
+     export const getTasks = () => dispatch => {
           setTimeout(() => {
-            console.log('i got traks');
-            dispatch({type: 'FETCH_TRACKS_SUCCESS', payload: mockApiData })
-          }, 2000)
+            console.log('i got tasks');
+            dispatch({type: 'FETCH_TASKS_SUCCESS', payload: mockApiData })
+          }, 500)
         }
 

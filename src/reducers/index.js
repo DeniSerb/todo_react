@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-import tracks from './tracks';
+
+import tasks from './tasks';
 import playlists from './playlists';
-import filterTracks from './filterTracks';
+import filterTasks from './filterTasks';
 
 
 export default combineReducers({
-  tracks,
+  tasks,
   playlists,
-  filterTracks
+  filterTasks
 })

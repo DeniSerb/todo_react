@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getTracks } from './actions/traks.js'
+import { getTasks } from './actions/tasks.js'
 
 class App extends Component {
-  addTrack() {
-    console.log('addTrack', this.trackInput.value);
-    this.props.onAddTrack(this.trackInput.value);
-    this.trackInput.value = '';
+  addTask() {
+    console.log('addTask', this.taskInput.value);
+    this.props.onAddTask(this.taskInput.value);
+    this.taskInput.value = '';
   };
-  findTrack () {
-        console.log('findTrack', this.searchInput.value);
-        this.props.onFindTrack(this.searchInput.value);
+  findTask () {
+        console.log('findTask', this.searchInput.value);
+        this.props.onFindTask(this.searchInput.value);
         this.searchInput.value = '';
   };
 	render() {
@@ -19,20 +19,20 @@ class App extends Component {
 		return (
 	<div>
     <div>
- 		   <input type="text" ref={(input)=> {this.trackInput = input}}/>
- 		   <button onClick={this.addTrack.bind(this)}>Add track</button>
+ 		   <input type="text" ref={(input)=> {this.taskInput = input}}/>
+ 		   <button onClick={this.addTask.bind(this)}>Add Task</button>
  		</div>
     <div>
        <input type="text" ref={(input)=> {this.searchInput = input}}/>
-       <button onClick={this.findTrack.bind(this)}>Find tracks</button>
+       <button onClick={this.findTask.bind(this)}>Find Tasks</button>
     </div>
     <div>
-      <button onClick={this.props.onGetTracks}>Get tracks</button>
+      <button onClick={this.props.onGetTasks}>Get Tasks</button>
     </div>
      <ul>
 
- 		 {this.props.tracks.map((track, index) =>
-  <li key={index}>{track.name}</li>
+ 		 {this.props.tasks.map((task, index) =>
+  <li key={index}>{task.name}</li>
 )}
 
   		</ul>
@@ -45,22 +45,22 @@ class App extends Component {
 
 export default connect(
   state => ({
-    tracks: state.tracks.filter(track => track.name.includes(state.filterTracks))
+    tasks: state.tasks.filter(task => task.name.includes(state.filterTasks))
   }),
   dispatch => ({
-    onAddTrack: (name) =>{
+    onAddTask: (name) =>{
       const payload = {
         id: Date.now().toString(),
         name: name
       };
-      dispatch({ type: 'ADD_TRACK', payload });
+      dispatch({ type: 'ADD_TASK', payload });
     },
-    onFindTrack: (name) => {
+    onFindTask: (name) => {
         console.log('name', name);
-        dispatch({type: 'FIND_TRACK', payload: name});
+        dispatch({type: 'FIND_TASK', payload: name});
     },
-    onGetTracks: () => {
-      dispatch(getTracks());
+    onGetTasks: () => {
+      dispatch(getTasks());
     }
   })
 )(App);
