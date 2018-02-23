@@ -1,5 +1,6 @@
 import axios from 'axios';
 /*import cookie from 'react-cookies';*/
+import { GET_TASKS, ADD_TASK, DELETE_TASK } from '../components/constants/actions_constants';
 const API_URL = `http://localhost:3000/tasks`;
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
@@ -13,7 +14,7 @@ export function getTasks() {
 
       .then(res => {
         if (res.status === 200) {
-          dispatch({ type: "GET_TASKS", payload: res.data });
+          dispatch({ type: GET_TASKS, payload: res.data });
         }
       })
       .catch(e => {
@@ -27,7 +28,7 @@ export function addTask(task) {
     axios.post(API_URL, task, { headers: headers })
 
       .then(res => {
-        dispatch({ type: "ADD_TASK", payload: res.data });
+        dispatch({ type: ADD_TASK, payload: res.data });
       })
       .catch(error => {
         console.error(error);
@@ -40,7 +41,7 @@ export function deleteTask(id){
     let body = { token: token };
     axios.delete(`${API_URL}/${id}`, { params: body, headers: headers })
       .then(res => {
-        dispatch({ type: 'DELETE_TASK', payload: id });
+        dispatch({ type: DELETE_TASK, payload: id });
       })
       .catch(id => {
         console.error("error", id);
