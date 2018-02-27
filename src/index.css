@@ -11,24 +11,38 @@ ul{
 
 li {
   list-style: none;
-  padding: 25px;
-  background: #dceff2;
+}
+
+.menu{
+  height: 50px;
+  background: #282f3a;
+  padding: 15px;
+  margin-bottom: 40px;
+}
+
+.menu-nav li{
+  float: left;
+  padding-left: 10px;
+}
+
+.menu li a{
+  color: #8597af;
+  text-decoration: none;
+}
+
+.menu h3{
+  margin: 0 !important;
+  color: #8597af;
+}
+
+.task-item{
+  list-style: none;
+  background-color: #c1d0e5;
+  height: 60px;
   margin-bottom: 10px;
-  padding-bottom: 45px;
+  padding: 15px;
 }
 
-.nav-items-center {
-  text-align: center;
-}
-
-.nav navbar-nav{
-  height: 50px;
-}
-
-nav{
-  height: 50px;
-}
-
-nav li{
-  padding: 0;
+.create-form{
+  margin-bottom: 45px;
 }

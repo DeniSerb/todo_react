@@ -13,7 +13,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, Route, hashHistory } from 'react-router';
-/*import cookie from 'react-cookies'*/
+import Email_confirmation from './components/user/email_confirmation';
+
 
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
@@ -40,6 +41,7 @@ ReactDOM.render(
       <Route path="/" component={App}/>
       <Route path="/users/Sign_up" component={Sign_up}/>
       <Route path='/users/login' component={Login_page} />
+      <Route path="/users/email_confirmation" component={Email_confirmation} />
     </Router>
   </Provider>,
   document.getElementById('root')

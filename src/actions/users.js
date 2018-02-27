@@ -18,7 +18,7 @@ export function signUp(user) {
       .then(res => {
         if (status === 200) {
         setTimeout(() => {
-          browserHistory.push('#/users/sign_in');
+          browserHistory.push('#/users/login');
           location.reload()
         }, 3000)
         } else {
@@ -41,7 +41,7 @@ export function emailConfirmation(token) {
         console.log(res.data)
         if (res.status === 200) {
           setTimeout(() => {
-            browserHistory.push('#/users/sign_in');
+            browserHistory.push('#/users/login');
             location.reload()
           }, 2000)
         } else {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-/*import { connect } from 'react-redux';*/
 import './App.css';
-import Nav from './components/layouts/menu';
+import Menu from './components/layouts/menu';
 
 
 class App extends Component {
@@ -10,7 +9,7 @@ class App extends Component {
 
 		return (
 	    <div>
-        <Nav />
+        <Menu />
         draste
 		  </div>
 

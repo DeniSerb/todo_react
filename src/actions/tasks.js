@@ -1,6 +1,6 @@
 import axios from 'axios';
-/*import cookie from 'react-cookies';*/
-import { GET_TASKS, ADD_TASK, DELETE_TASK } from '../components/constants/actions_constants';
+import { GET_TASKS, ADD_TASK, DELETE_TASK, GET_TASK_ID } from '../components/constants/actions_constants';
+import { browserHistory } from 'react-router';
 const API_URL = `http://localhost:3000/tasks`;
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
@@ -36,6 +36,22 @@ export function addTask(task) {
   }
 }
 
+export function getTask(id) {
+  return function(dispatch, getState) {
+    return new Promise((resolve, reject) => {
+      axios.get(`${API_URL}/${id}`, { headers: headers })
+        .then(res => {
+          resolve(res)
+          dispatch({ type: GET_TASK_ID, payload: res.data });
+        })
+        .catch(e => {
+          console.error("error: ", e);
+          reject(e)
+        })
+    })
+  }
+}
+
 export function deleteTask(id){
   return function(dispatch, getState) {
     let body = { token: token };
@@ -45,6 +61,24 @@ export function deleteTask(id){
       })
       .catch(id => {
         console.error("error", id);
+      })
+  }
+}
+
+
+
+export function editTask(task) {
+  return function(dispatch, getState) {
+    axios.patch(`${API_URL}/${task.id}`, task, { headers: headers })
+
+      .then(res => {
+        setTimeout(() => {
+          browserHistory.push('/');
+          location.reload();
+        }, 2000)
+      })
+      .catch(e => {
+        console.error("Dispatching editTask: failed! ", e);
       })
   }
 }
