@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Menu from './components/layouts/menu';
+import SignUp from './components/user/Sign_up';
 
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
 		return (
 	    <div>
         <Menu />
-        draste
+        <SignUp />
 		  </div>
 
 		);

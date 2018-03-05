@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios              from 'axios';
 import { browserHistory } from 'react-router';
-import { push } from 'react-router-redux'
-import { locations } from '../components/locations';
+import { push }           from 'react-router-redux'
+import { locations }      from '../components/locations';
+import { notificationsAsync }    from '../components/middlewares/notifications';
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 
@@ -27,6 +28,11 @@ export function Login(session){
 
           browserHistory.push('/');
           location.reload();
+        }
+        else {
+          notificationsAsync({
+            message: res.data.message
+          })(dispatch);
         }
       })
 

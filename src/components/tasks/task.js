@@ -1,43 +1,36 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getTask, editTask} from '../../actions/tasks';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import FontAwesome from 'react-fontawesome';
+import '../../index.css';
 
 class Task extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      task: {
-        isEditing: false
-      }
+  static propTypes = {
+    tasks: PropTypes.array.isRequired,
+    complete: PropTypes.func.isRequired
+  }
+
+  handleCompleteTask (id, active) {
+    this.props.complete(id, active);
+  }
+
+  renderTasks() {
+    let filterComleted = this.props.tasks
+
+    if (this.props.Completed === "task.active") {
+        filterComleted = filterComleted.filter(task => task.active);
+      } else {
+        filterComleted = filterComleted.filter(task => !task.active);
     }
-  }
 
-  static contextTypes = {
-    store: React.PropTypes.object
-  };
+    return filterComleted.map((task) => {
 
-  handleEdit () {
-    this.setState({isEditing: !this.state.isEditing});
-  }
-
-  handleChange(field, e) {
-    let new_task = Object.assign({}, this.state.task);
-    new_task[field] = e.target.value;
-    this.setState({ task: new_task });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.editTask(this.state.task);
-}
-
-  renderTask () {
     return(
-     <div>
-      {this.props.tasks.map((task, index) =>
-        <li className="task-item" key={index}>
-          <div className="col-md-4">
-            {task.title}
+      <div>
+        <li className="task-item">
+          <div className="col-md-5">
+            <Link to={`/tasks/${task.id}`}>
+              {task.title}
+            </Link>
           </div>
           <div className="col-md-2">
             {task.priority}
@@ -45,65 +38,30 @@ class Task extends Component {
           <div className="col-md-2">
             {task.due_date}
           </div>
-          <div className="col-md-2">
-             <button onClick={() => this.props.delete(task.id)} className="btn btn-danger" title="Delete">delete</button>
-          </div>
-          <div className="col-md-2">
-             <button onClick={this.handleEdit.bind(this)} className="btn btn-default" title="Edit">edit</button>
+          <div className="btn-group col-md-3" role="group" aria-label="Basic example">
+              <button onClick={() => this.props.delete(task.id)} className="btn btn-danger" title="Delete">delete</button>
+              <Link className="btn btn-primary" to={`/tasks/${task.id}/edit`}>
+                Edit
+              </Link>
+              <button onClick={this.handleCompleteTask.bind(this, task.id, task.active)} className="btn btn-success" title="Delete">
+                <FontAwesome className={task.active ? "fa-check" : "fa-arrow-circle-up"}></FontAwesome>
+              </button>
           </div>
         </li>
-      )}
     </div>
-    )
-  }
-
-  renderEditForm (id) {
-    const {task} = this.state;
-    return(
-      <form className='form-group' onSubmit={this.handleSubmit.bind(this)}>
-      <div className="col-md-2">
-        <input className='form-control' onChange={this.handleChange.bind(this, 'title')} placeholder='Edit title' type="text" value={task.title} name='title' required minLength="5" maxLength="30" />
-      </div>
-
-      <div className="col-md-3">
-        <input className='form-control' onChange={this.handleChange.bind(this, 'description')} placeholder='Edit description' type="text" value={task.description} name='description' required />
-      </div>
-
-      <div className="col-md-2">
-        <input className='form-control' onChange={this.handleChange.bind(this, 'priority')} placeholder='Edit priority' type="number" value={task.priority} name='priority' required min="-9999" max="9999" />
-      </div>
-
-      <div className="col-md-2">
-        <input className='form-control' onChange={this.handleChange.bind(this, 'date')} type="date" value={task.due_date} name='due_date' required />
-      </div>
-
-      <div className="col-md-1">
-        <button type="submit" className="btn btn-success form-group">Save</button>
-      </div>
-      <div className="col-md-1">
-        <button type="submit" onClick={this.handleSubmit.bind(this)} className="btn btn-success form-group">Back to list</button>
-      </div>
-      </form>
-    )
-  }
+     );
+  });
+}
 
   render() {
-    console.log(this.state.isEditing)
-    if (this.state.isEditing){
-      return (this.renderEditForm())} else {
-      return(this.renderTask())
-    }
+    console.log(this.props.tasks)
+   return (
+      <div>
+        {this.renderTasks()}
+      </div>
+    );
   }
 };
 
 
-export default connect(
-  state => ({
-    tasks_edition: state.tasks.item
-  }),
-  dispatch => ({
-    onEditTask: (task) => {
-      dispatch(editTask(task));
-    }
-  })
-)(Task);
+export default Task;

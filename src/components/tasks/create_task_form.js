@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Menu from '../layouts/menu';
 import { addTask } from '../../actions/tasks';
+import '../../index.css';
 
 class Form extends Component {
   constructor(props) {
@@ -30,13 +31,14 @@ class Form extends Component {
   handleSubmit(element) {
     element.preventDefault();
     this.props.onAddTask(this.state.task);
+    document.getElementById("new-task-form").reset();
   }
 
   render() {
   return (
   <div>
   <div className="container">
-    <form className='form-group' onSubmit={ this.handleSubmit.bind(this) } >
+    <form id="new-task-form" className='form-group' onSubmit={ this.handleSubmit.bind(this) } >
       <div className="create-form">
       <div className="col-md-3">
       <label>Title:</label>
@@ -45,7 +47,7 @@ class Form extends Component {
           onChange={ this.handleChange.bind( this, 'title') }
           type="text"
           placeholder='Enter a title'
-          minLength="5"
+          minLength="1"
           maxLength="30"
           required
         />
@@ -81,12 +83,11 @@ class Form extends Component {
           className='form-control'
           onChange={ this.handleChange.bind( this, 'due_date') }
           type="date"
-          placeholder='Enter a date'
           required
         />
         </div>
         <br/>
-        <button type="submit" className="btn btn-primary center-block form-group">Add task</button>
+        <button type="submit" className="btn btn-success form-group">Add task</button>
      </div>
     </form>
     </div>

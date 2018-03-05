@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #ececee;
 }
 
 ul{
@@ -13,8 +14,16 @@ li {
   list-style: none;
 }
 
+p {
+  font-size: 20px;
+}
+
+a, a:hover{
+  text-decoration: none;
+}
+
 .menu{
-  height: 50px;
+  height: 63px;
   background: #282f3a;
   padding: 15px;
   margin-bottom: 40px;
@@ -22,12 +31,16 @@ li {
 
 .menu-nav li{
   float: left;
-  padding-left: 10px;
+  padding: 5px;
 }
 
 .menu li a{
   color: #8597af;
   text-decoration: none;
+}
+
+.menu li a:hover{
+  color: #fff;
 }
 
 .menu h3{
@@ -38,11 +51,52 @@ li {
 .task-item{
   list-style: none;
   background-color: #c1d0e5;
-  height: 60px;
+  height: 63px;
   margin-bottom: 10px;
   padding: 15px;
 }
 
 .create-form{
   margin-bottom: 45px;
+}
+
+.sort {
+  margin-bottom: 85px;
+}
+
+.task-description{
+  overflow: auto;
+  background: #fff;
+-webkit-box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
+-moz-box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
+box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
+}
+
+.fa-clock-o{
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.description{
+  padding: 90px;
+}
+
+.sign-up-btn{
+  margin-top: 20px;
+}
+
+.save {
+  margin-left: 233px
+}
+
+.confirmed {
+ background-color: #c1d0e5;
+  height: 140px;
+  width: 500px;
+  margin-top: 200px;
+  margin-left: 350px;
+  padding: 10px;
+-webkit-box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
+-moz-box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
+box-shadow: 13px 14px 5px -10px rgba(0,0,0,0.4);
 }

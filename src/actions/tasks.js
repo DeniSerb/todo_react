@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { GET_TASKS, ADD_TASK, DELETE_TASK, GET_TASK_ID } from '../components/constants/actions_constants';
+import { GET_TASKS, ADD_TASK, DELETE_TASK, GET_TASK_ID, COMPLETE_TASK } from '../components/constants/actions_constants';
 import { browserHistory } from 'react-router';
+import { notificationsAsync }    from '../components/middlewares/notifications';
+
 const API_URL = `http://localhost:3000/tasks`;
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
@@ -33,7 +35,9 @@ export function addTask(task) {
       .catch(error => {
         console.error(error);
       })
+
   }
+
 }
 
 export function getTask(id) {
@@ -75,10 +79,31 @@ export function editTask(task) {
         setTimeout(() => {
           browserHistory.push('/');
           location.reload();
-        }, 2000)
+        }, 1)
       })
       .catch(e => {
         console.error("Dispatching editTask: failed! ", e);
+      })
+  }
+}
+
+export function completeTask(id, active) {
+  return function(dispatch, getState) {
+    if (active) {
+      active = false
+    } else {
+      active = true
+    }
+
+    let task = { id: id, active: active }
+    let body = { task: task }
+    axios.patch(`${API_URL}/${task.id}`, body, { headers: headers })
+
+      .then(res => {
+        dispatch({ type: COMPLETE_TASK, payload: res.data });
+      })
+      .catch(e => {
+        console.error("error: ", e);
       })
   }
 }

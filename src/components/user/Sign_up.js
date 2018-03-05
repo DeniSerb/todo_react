@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signUp  } from '../../actions/users';
-
+import Alert        from '../layouts/alert';
 
 class Sign_up extends React.Component {
   constructor() {
@@ -30,57 +30,52 @@ class Sign_up extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="col-md-6">
+        <div className="col-md-12">
+          <Alert />
+        </div>
 
-        <div className='col-sm-3 col-md-4' />
-
-        <div className='col-sm-6 col-md-4' >
-
-          <h2 className='text-center'>Sign up form</h2>
+          <h2 className='text-center'>Do you have an account?</h2>
+          <h3 className='text-center'>You can create it now:</h3>
 
           <form className='form-horizontal' onSubmit={this.handleSubmit.bind(this)} >
 
-            <div>
+            <div className="col-md-8 col-md-offset-2">
               <label>Email:</label>
               <input
                 className='form-control'
                 placeholder="Enter your email"
                 type="email"
                 onChange={this.handleChange.bind(this, 'email')}
-                minLength="8"
                 required
               />
             </div>
 
-            <div>
+            <div className="col-md-8 col-md-offset-2">
               <label>Firstname:</label>
               <input
                 className='form-control'
                 placeholder="Enter your firstname"
                 type="text"
                 onChange={this.handleChange.bind(this, 'first_name')}
-                pattern='[A-Za-z]{3,10}'
                 title="Firstname can contain only letters. 3-10 symbols is allowed"
-                // minLength="3"
                 required
               />
             </div>
 
-            <div>
+            <div className="col-md-8 col-md-offset-2">
               <label>Lastname:</label>
               <input
                 className='form-control'
                 placeholder="Enter your lastname"
                 type="text"
                 onChange={this.handleChange.bind(this, 'last_name')}
-                pattern='[A-Za-z]'
                 title="Lastname can contain only letters. 4-12 symbols is allowed"
-                pattern='[A-Za-z]{4,12}'
                 required
               />
             </div>
 
-            <div>
+            <div className="col-md-8 col-md-offset-2">
               <label>Password:</label>
               <input
                 className='form-control'
@@ -92,7 +87,7 @@ class Sign_up extends React.Component {
               />
             </div>
 
-            <div>
+            <div className="col-md-8 col-md-offset-2">
               <label>Password confirmation:</label>
               <input
                 className='form-control'
@@ -104,12 +99,11 @@ class Sign_up extends React.Component {
               />
             </div>
 
-            <br />
-
-            <button type="submit" className="btn btn-primary btn-lg center-block">Sign up</button>
-
+            <div className="clearfix"></div>
+            <div className="col-md-12">
+              <button type="submit" className="sign-up-btn btn btn-primary btn-lg center-block">Sign up</button>
+            </div>
           </form>
-        </div>
 
       </div>
     );

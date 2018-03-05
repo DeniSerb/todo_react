@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import { notificationsAsync }    from '../components/middlewares/notifications';
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 let headers = Object.assign({}, HEADERS)
@@ -12,7 +13,6 @@ const USERS_URL = URL + '/users'
 export function signUp(user) {
   return function(dispatch, getState) {
     let body = { user: user }
-    // let body = JSON.stringify({user: user});
     axios.post(`${USERS_URL}`, body, { headers: HEADERS })
 
       .then(res => {
@@ -20,14 +20,18 @@ export function signUp(user) {
         setTimeout(() => {
           browserHistory.push('#/users/login');
           location.reload()
-        }, 3000)
+        }, 1000)
         } else {
-          console.error("error: ");
+          notificationsAsync({
+            message: res.data.message
+          })(dispatch);
         }
       })
 
       .catch(error => {
-        console.error("error: ");
+        notificationsAsync({
+          message: 'error'
+        })(dispatch);
       })
   }
 }
@@ -43,14 +47,18 @@ export function emailConfirmation(token) {
           setTimeout(() => {
             browserHistory.push('#/users/login');
             location.reload()
-          }, 2000)
+          }, 1000)
         } else {
-          console.error("error: ");
+          notificationsAsync({
+            message: 'error'
+          })(dispatch);
         }
       })
 
       .catch(e => {
-        console.error("error: ");
+        notificationsAsync({
+          message: 'error'
+        })(dispatch);
       })
   }
 }

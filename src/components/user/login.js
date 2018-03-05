@@ -1,7 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Login } from '../../actions/sessions';
-
+import React        from 'react';
+import { connect }  from 'react-redux';
+import { Login }    from '../../actions/sessions';
+import Menu         from '../layouts/menu';
+import Alert        from '../layouts/alert';
 
 class Login_page extends React.Component {
   constructor() {
@@ -26,9 +27,13 @@ class Login_page extends React.Component {
   }
 
   render() {
+    console.log(localStorage, "******************")
     return (
       <div>
-
+        <Menu/>
+        <div className="col-md-12">
+          <Alert />
+        </div>
         <div className='col-sm-3 col-md-4' />
 
         <div className='col-sm-6 col-md-4' >
