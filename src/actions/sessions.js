@@ -6,7 +6,7 @@ import { notificationsAsync }    from '../components/middlewares/notifications';
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 
-const URL = 'http://localhost:3000'
+const URL = 'http://aqueous-badlands-77688'
 
 const SESSION_URL = URL + '/sessions'
 
