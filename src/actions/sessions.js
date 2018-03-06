@@ -6,7 +6,7 @@ import { notificationsAsync }    from '../components/middlewares/notifications';
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 
-const URL = 'https://aqueous-badlands-77688.herokuapp.com/'
+const URL = 'https://aqueous-badlands-77688.herokuapp.com'
 
 const SESSION_URL = URL + '/sessions'
 
