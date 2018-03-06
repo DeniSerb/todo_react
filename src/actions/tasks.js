@@ -3,7 +3,7 @@ import { GET_TASKS, ADD_TASK, DELETE_TASK, GET_TASK_ID, COMPLETE_TASK } from '..
 import { browserHistory } from 'react-router';
 import { notificationsAsync }    from '../components/middlewares/notifications';
 
-const API_URL = `http://localhost:3000/tasks`;
+const API_URL = `https://reactingreact.herokuapp.com/tasks`;
 
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 const token = localStorage.getItem('token')

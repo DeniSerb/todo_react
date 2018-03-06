@@ -5,7 +5,7 @@ import { notificationsAsync }    from '../components/middlewares/notifications';
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 let headers = Object.assign({}, HEADERS)
 
-const URL = 'http://localhost:3000'
+const URL = 'https://reactingreact.herokuapp.com'
 
 const USERS_URL = URL + '/users'
 
