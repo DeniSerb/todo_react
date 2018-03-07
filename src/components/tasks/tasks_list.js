@@ -85,7 +85,6 @@ class List extends Component {
   }
 
 	render() {
-    console.log(localStorage, "###############")
 	return (
     <div>
     <Menu

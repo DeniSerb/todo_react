@@ -71,7 +71,7 @@ class Form extends Component {
           onChange={ this.handleChange.bind( this, 'priority') }
           type="number"
           placeholder='Enter a priority'
-          max="3"
+          max="5"
           min="1"
           required
         />

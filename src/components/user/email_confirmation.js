@@ -12,10 +12,9 @@ class Email_Confirmation extends Component {
 
   render() {
     return(
-      <div className="confirmed">
-        <h1> Congratulations </h1>
-        <h3> Your email was successfully confirmed!</h3>
-      </div>
+      <div class="alert alert-success">
+        <strong>Success!</strong> Your email confirmed.
+    </div>
     );
   }
 }

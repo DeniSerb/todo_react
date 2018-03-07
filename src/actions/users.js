@@ -5,11 +5,9 @@ import { notificationsAsync }    from '../components/middlewares/notifications';
 const HEADERS = new Headers({ 'Content-Type': 'application/json'})
 let headers = Object.assign({}, HEADERS)
 
-const URL = 'https://aqueous-badlands-77688.herokuapp.com'
+const URL = 'https://aqueous-badlands-77688.herokuapp.com/'
 
 const USERS_URL = URL + '/users'
-
-
 
 export function signUp(user) {
   return function(dispatch, getState) {

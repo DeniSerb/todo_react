@@ -50,13 +50,13 @@ class Edit extends Component {
                 <h2 className='text-center'>Task update</h2>
                 <form className='form-group' onSubmit={ this.handleSubmit.bind(this) } >
                   <label>Title:</label>
-                  <input className='form-control' type="text" value={task.title} name='title' onChange={this.handleChange.bind(this, 'title')} required minLength="5" maxLength="30" />
+                  <input className='form-control' type="text" value={task.title} name='title' onChange={this.handleChange.bind(this, 'title')} required minLength="1" maxLength="30" />
 
                   <label>Description:</label>
                   <input className='form-control' type="text" value={task.description} name='description' onChange={this.handleChange.bind(this, 'description')} required />
 
                   <label>Priority:</label>
-                  <input className='form-control' type="number" value={task.priority} name='priority' onChange={this.handleChange.bind(this, 'priority')} required min="-9999" max="9999" />
+                  <input className='form-control' type="number" value={task.priority} name='priority' onChange={this.handleChange.bind(this, 'priority')} required min="1" max="5" />
 
                   <label>Date:</label>
                   <input className='form-control' type="date" value={task.due_date} name='due_date' onChange={this.handleChange.bind(this, 'due_date')} required />
