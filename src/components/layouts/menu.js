@@ -16,20 +16,20 @@ class Menu extends Component {
 
   render() {
     const menuPattern =
-      <div>
-        <div className="col-md-4">
-          <Link to="/"><h3>Taskmanager</h3></Link>
-        </div>
-        <div className="pull-right btn btn-danger" onClick={this.logout.bind(this)}>logout</div>
+    <div>
+      <div className="col-md-4">
+        <Link to="/"><h3>Taskmanager</h3></Link>
       </div>
+      <div className="pull-right btn btn-danger" onClick={this.logout.bind(this)}>logout</div>
+    </div>
 
     if (token && token.length === 30){
       if (this.props.currentLocation === "/") {
-      return(
-        <div className="menu">
-          { menuPattern }
-        </div>
-      )
+        return(
+          <div className="menu">
+            { menuPattern }
+          </div>
+          )
       } else {
         return(
           <div className="menu">
@@ -40,23 +40,23 @@ class Menu extends Component {
               </Link>
             </div>
           </div>
-        )
+          )
       }
     } else {
       return(
         <div className="menu">
           <div className="col-md-4">
             <Link to="/"><h3>Taskmanager</h3></Link>
-          </div>
-          <div className="col-md-8">
-          <ul className="pull-right menu-nav">
-            <li>
-              <Link to="/users/login">Login</Link>
-            </li>
-          </ul>
-          </div>
+            </div>
+            <div className="col-md-8">
+             <ul className="pull-right menu-nav">
+               <li>
+                 <Link to="/users/login">Login</Link>
+               </li>
+             </ul>
+           </div>
         </div>
-      )
+        )
     }
   }
 }

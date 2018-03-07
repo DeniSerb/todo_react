@@ -14,24 +14,24 @@ export function signUp(user) {
     let body = { user: user }
     axios.post(`${USERS_URL}`, body, { headers: HEADERS })
 
-      .then(res => {
-        if (status === 200) {
+    .then(res => {
+      if (status === 200) {
         setTimeout(() => {
           browserHistory.push('#/users/login');
           location.reload()
         }, 1000)
-        } else {
-          notificationsAsync({
-            message: res.data.message
-          })(dispatch);
-        }
-      })
-
-      .catch(error => {
+      } else {
         notificationsAsync({
-          message: 'error'
+          message: res.data.message
         })(dispatch);
-      })
+      }
+    })
+
+    .catch(error => {
+      notificationsAsync({
+        message: 'error'
+      })(dispatch);
+    })
   }
 }
 
@@ -40,24 +40,24 @@ export function emailConfirmation(token) {
     let body = {user: token};
     axios.post(`${USERS_URL}/email_confirmation`, body, { headers: HEADERS })
 
-      .then(res => {
-        console.log(res.data)
-        if (res.status === 200) {
-          setTimeout(() => {
-            browserHistory.push('#/users/login');
-            location.reload()
-          }, 3000)
-        } else {
-          notificationsAsync({
-            message: 'error'
-          })(dispatch);
-        }
-      })
-
-      .catch(e => {
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200) {
+        setTimeout(() => {
+          browserHistory.push('#/users/login');
+          location.reload()
+        }, 3000)
+      } else {
         notificationsAsync({
           message: 'error'
         })(dispatch);
-      })
+      }
+    })
+
+    .catch(e => {
+      notificationsAsync({
+        message: 'error'
+      })(dispatch);
+    })
   }
 }

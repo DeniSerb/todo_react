@@ -7,16 +7,16 @@ import '../../index.css';
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      task: {
-        title: '',
-        description: '',
-        priority: '',
-        due_date: '',
-        user_id: ''
-      }
+      this.state = {
+        task: {
+         title: '',
+          description: '',
+         priority: '',
+         due_date: '',
+          user_id: ''
+       }
+     }
     }
-  }
 
   static contextTypes = {
     store: React.PropTypes.object
@@ -35,64 +35,66 @@ class Form extends Component {
   }
 
   render() {
-  return (
-  <div>
-  <div className="container">
-    <form id="new-task-form" className='form-group' onSubmit={ this.handleSubmit.bind(this) } >
-      <div className="create-form">
+    return (
+      <div>
+        <div className="container">
+          <form id="new-task-form" className='form-group' onSubmit={ this.handleSubmit.bind(this) } >
+        <div className="create-form">
+          <div className="col-md-3">
+            <label>Title:</label>
+             <input
+              className='form-control'
+              onChange={ this.handleChange.bind( this, 'title') }
+              type="text"
+              placeholder='Enter a title'
+              minLength="1"
+              maxLength="30"
+              required
+      />
+      </div>
+
       <div className="col-md-3">
-      <label>Title:</label>
-       <input
-          className='form-control'
-          onChange={ this.handleChange.bind( this, 'title') }
-          type="text"
-          placeholder='Enter a title'
-          minLength="1"
-          maxLength="30"
-          required
-        />
-        </div>
-
-        <div className="col-md-3">
         <label>Description:</label>
-        <input
-          className='form-control col-md-4'
-          onChange={ this.handleChange.bind( this, 'description') }
-          type="text"
-          placeholder='Enter a description'
-          required
+          <input
+            className='form-control col-md-4'
+            onChange={ this.handleChange.bind( this, 'description') }
+            type="text"
+            placeholder='Enter a description'
+            required
         />
-        </div>
+      </div>
 
-        <div className="col-md-2">
+      <div className="col-md-2">
         <label>Priority:</label>
-        <input
-          className='form-control col-md-4'
-          onChange={ this.handleChange.bind( this, 'priority') }
-          type="number"
-          placeholder='Enter a priority'
-          max="5"
-          min="1"
-          required
+          <input
+            className='form-control col-md-4'
+            onChange={ this.handleChange.bind( this, 'priority') }
+            type="number"
+            placeholder='Enter a priority'
+            max="5"
+            min="1"
+            required
         />
-        </div>
+      </div>
 
-        <div className="col-md-2">
+      <div className="col-md-2">
         <label>Date:</label>
-        <input
-          className='form-control'
-          onChange={ this.handleChange.bind( this, 'due_date') }
-          type="date"
-          required
-        />
+          <input
+            className='form-control'
+            onChange={ this.handleChange.bind( this, 'due_date') }
+            type="date"
+            required
+          />
+           </div>
+         <br/>
+          <button type="submit" className="btn btn-success form-group">Add task</button>
         </div>
-        <br/>
-        <button type="submit" className="btn btn-success form-group">Add task</button>
-     </div>
-    </form>
+      </form>
     </div>
-    </div>
-    );
+  </div>
+
+
+      );
   }
 };
 
@@ -100,8 +102,8 @@ class Form extends Component {
 export default connect(
   state => ({}),
     dispatch => ({
-      onAddTask: (task) => {
-      dispatch(addTask(task));
-    }
+     onAddTask: (task) => {
+        dispatch(addTask(task));
+     }
   })
 )(Form);

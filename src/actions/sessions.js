@@ -18,27 +18,27 @@ export function Login(session){
 
     axios.post(`${SESSION_URL}`, body, { headers: HEADERS })
 
-      .then(res => {
-        if (res.status === 200) {
-          localStorage.setItem('token', res.data.token);
+    .then(res => {
+      if (res.status === 200) {
+        localStorage.setItem('token', res.data.token);
 
-          locations({
-            url: '/'
-          })(dispatch);
+        locations({
+          url: '/'
+        })(dispatch);
 
-          browserHistory.push('/');
-          location.reload();
-        }
-        else {
-          notificationsAsync({
-            message: res.data.message
-          })(dispatch);
-        }
-      })
+        browserHistory.push('/');
+        location.reload();
+      }
+      else {
+        notificationsAsync({
+          message: res.data.message
+        })(dispatch);
+      }
+    })
 
-      .catch(e => {
-        console.error("error: ", e);
-      })
+    .catch(e => {
+      console.error("error: ", e);
+    })
 
   }
 }

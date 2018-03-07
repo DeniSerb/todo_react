@@ -40,9 +40,9 @@ class Task extends Component {
           </div>
           <div className="btn-group col-md-3" role="group" aria-label="Basic example">
               <button onClick={() => this.props.delete(task.id)} className="btn btn-danger" title="Delete">delete</button>
-              <Link className="btn btn-primary" to={`/tasks/${task.id}/edit`}>
-                Edit
-              </Link>
+                <Link className="btn btn-primary" to={`/tasks/${task.id}/edit`}>
+                  Edit
+                </Link>
               <button onClick={this.handleCompleteTask.bind(this, task.id, task.active)} className="btn btn-success" title="Delete">
                 <FontAwesome className={task.active ? "fa-check" : "fa-arrow-circle-up"}></FontAwesome>
               </button>

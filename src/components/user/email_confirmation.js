@@ -18,8 +18,8 @@ class Email_Confirmation extends Component {
           <strong>Success!</strong> Your email confirmed.
         </div>
         <img src={Image} />
-    </div>
-    );
+      </div>
+      );
   }
 }
 
@@ -29,7 +29,7 @@ export default connect(
   }),
   dispatch => ({
     onEmailConfirmation: (token) => {
-      dispatch(emailConfirmation(token));
-    }
-  })
-)(Email_Confirmation);
+     dispatch(emailConfirmation(token));
+   }
+ })
+  )(Email_Confirmation);

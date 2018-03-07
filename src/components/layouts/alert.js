@@ -9,15 +9,15 @@ const Alert = ({ notification }) => {
   if (notificationsAsync.length > 0) {
     return (
       <div className='notifications-block container'>
-        <ul>
-          {
-            notificationsAsync.map( (key, index) => {
-              return <li key={ index } className='notification alert alert-info'>{ key.message }</li>
-            })
-          }
-        </ul>
+      <ul>
+      {
+        notificationsAsync.map( (key, index) => {
+          return <li key={ index } className='notification alert alert-info'>{ key.message }</li>
+        })
+      }
+      </ul>
       </div>
-    );
+      );
   }
 
   return null;
