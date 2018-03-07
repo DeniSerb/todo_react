@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { emailConfirmation } from '../../actions/users';
+import Image from './Anime.png'
 
 
 class Email_Confirmation extends Component {
@@ -15,7 +16,8 @@ class Email_Confirmation extends Component {
       <div className="container">
         <div className="alert alert-success">
           <strong>Success!</strong> Your email confirmed.
-      </div>
+        </div>
+        <img src={Image} />
     </div>
     );
   }

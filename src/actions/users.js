@@ -46,7 +46,7 @@ export function emailConfirmation(token) {
           setTimeout(() => {
             browserHistory.push('#/users/login');
             location.reload()
-          }, 1000)
+          }, 3000)
         } else {
           notificationsAsync({
             message: 'error'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './index.css';
 import Menu from './components/layouts/menu';
 import SignUp from './components/user/Sign_up';
 
