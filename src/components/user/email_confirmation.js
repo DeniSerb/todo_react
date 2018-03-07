@@ -12,8 +12,10 @@ class Email_Confirmation extends Component {
 
   render() {
     return(
-      <div class="alert alert-success">
-        <strong>Success!</strong> Your email confirmed.
+      <div className="container">
+        <div className="alert alert-success">
+          <strong>Success!</strong> Your email confirmed.
+      </div>
     </div>
     );
   }
