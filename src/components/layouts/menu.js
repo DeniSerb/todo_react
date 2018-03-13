@@ -45,10 +45,10 @@ class Menu extends Component {
     } else {
       return(
         <div className="menu">
-          <div className="col-md-4">
+          <div className="col-md-4 col-xs-4">
             <Link to="/"><h3>Taskmanager</h3></Link>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8 col-xs-8">
              <ul className="pull-right menu-nav">
                <li>
                  <Link to="/users/login">Login</Link>
